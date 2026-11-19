@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 13px system-ui, sans-serif; margin: 12px; min-width: 460px; }
+  label { display: block; margin: 10px 0 3px; font-weight: 600; }
+  input[type=text], input[type=password], textarea { width: 100%; box-sizing: border-box; padding: 4px; }
+  textarea { height: 70px; font-family: ui-monospace, monospace; }
+  .hint { color: #666; font-weight: normal; font-size: 12px; }
+  .row { margin-top: 14px; display: flex; gap: 8px; align-items: center; }
+  #status { margin-left: 6px; white-space: pre-line; }
+  .ok { color: #1a7f37; } .err { color: #c62828; }
+</style>
+</head>
+<body>
+  <label for="rpcUrl">RPC URL</label>
+  <input type="text" id="rpcUrl" placeholder="http://192.168.1.10:9091/transmission/rpc">
+
+  <label for="user">Username <span class="hint">(empty if RPC has no password)</span></label>
+  <input type="text" id="user" autocomplete="off">
+
+  <label for="pass">Password</label>
+  <input type="password" id="pass" autocomplete="off">
+
+  <label for="folders">Download folders <span class="hint">(one per line, <code>/path</code> or <code>Label = /path</code>; first is the default. Empty = Transmission's default. With 2 or more, clicking a link asks which.)</span></label>
+  <textarea id="folders" placeholder="Downloads = /downloads&#10;Audiobooks = /downloads/audiobooks"></textarea>
+
+  <label><input type="checkbox" id="paused"> Add torrents paused</label>
+
+  <label for="patterns">Extra link patterns <span class="hint">(one regex per line, for trackers whose download links don't end in .torrent)</span></label>
+  <textarea id="patterns" placeholder="example\.org/download/\d+"></textarea>
+
+  <div class="row">
+    <button id="save">Save</button>
+    <button id="test">Test connection</button>
+    <span id="status"></span>
+  </div>
+  <script src="folders.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
